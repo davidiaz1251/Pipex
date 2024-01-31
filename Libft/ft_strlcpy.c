@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/15 14:37:15 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/20 10:44:37 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int fd[2];
-	int pid;
-	int status;
+	size_t	srclen;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	srclen = ft_strlen(src);
+	if (srclen + 1 < dstsize)
 	{
-		close(fd[0]);
+		ft_memcpy(dst, src, srclen + 1);
 	}
-	else
+	else if (dstsize != 0)
 	{
-		
+		ft_memcpy(dst, src, dstsize - 1);
+		dst[dstsize - 1] = '\0';
 	}
-	return (0);
+	return (srclen);
 }

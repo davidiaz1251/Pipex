@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/19 10:44:58 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/19 12:45:05 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int fd[2];
-	int pid;
-	int status;
+	char unsigned		character;
+	const unsigned char	*str;
+	size_t				i;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	character = (unsigned char)c;
+	str = (const unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		close(fd[0]);
-	}
-	else
-	{
-		
+		if (str[i] == character)
+			return ((void *)str + i);
+		i++;
 	}
 	return (0);
 }

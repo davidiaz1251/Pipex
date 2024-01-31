@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/22 10:28:57 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/22 10:48:56 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int fd[2];
-	int pid;
-	int status;
+	char	*str_new;
+	char	*init;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
-	{
-		close(fd[0]);
-	}
-	else
-	{
-		
-	}
-	return (0);
+	if (!s1 && !s2)
+		return (NULL);
+	str_new = (char *)malloc(sizeof(char)
+			* (ft_strlen(s1) + ft_strlen(s2) + 1));
+	init = str_new;
+	if (!str_new)
+		return (NULL);
+	while (*s1)
+		*str_new++ = *s1++;
+	while (*s2)
+		*str_new++ = *s2++;
+	*str_new = '\0';
+	return (init);
 }

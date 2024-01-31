@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/15 11:21:52 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/20 11:07:41 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int fd[2];
-	int pid;
-	int status;
+	const char	*source;
+	char		*dest;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	if (!dst && !src)
+		return (NULL);
+	dest = (char *)dst;
+	source = (const char *)src;
+	while (n--)
 	{
-		close(fd[0]);
+		*dest++ = *source++;
 	}
-	else
-	{
-		
-	}
-	return (0);
+	return (dst);
 }

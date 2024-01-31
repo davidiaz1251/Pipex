@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/28 10:49:19 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/28 11:32:22 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int fd[2];
-	int pid;
-	int status;
+	int		len;
+	int		i;
+	char	*memory;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	i = 0;
+	len = ft_strlen(s);
+	memory = (char *)malloc(sizeof(char) * (len + 1));
+	if (!memory)
+		return (NULL);
+	while (*(s + i))
 	{
-		close(fd[0]);
+		*(memory + i) = f(i,*(s + i));
+		i++;
 	}
-	else
-	{
-		
-	}
-	return (0);
+	*(memory + i) = '\0';
+	return (memory);
 }

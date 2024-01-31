@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/29 14:38:37 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/29 14:55:31 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int fd[2];
-	int pid;
-	int status;
-
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	if (lst && f)
 	{
-		close(fd[0]);
+		ft_lstiter(lst->next, f);
+		(f)(lst->content);
 	}
-	else
-	{
-		
-	}
-	return (0);
 }

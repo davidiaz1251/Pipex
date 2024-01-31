@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/29 10:36:22 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/29 12:05:06 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+int	ft_lstsize(t_list *lst)
 {
-	int fd[2];
-	int pid;
-	int status;
+	int	i;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	i = 0;
+	while (lst)
 	{
-		close(fd[0]);
+		lst = lst->next;
+		i++;
 	}
-	else
-	{
-		
-	}
-	return (0);
+	return (i);
 }

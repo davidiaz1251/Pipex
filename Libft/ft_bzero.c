@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/15 10:45:27 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/16 17:45:17 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_bzero(void *s, size_t n)
 {
-	int fd[2];
-	int pid;
-	int status;
+	unsigned char	*ptr;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	ptr = s;
+	if (n != 0)
 	{
-		close(fd[0]);
+		while (n--)
+		{
+			*ptr++ = '\0';
+		}
 	}
-	else
-	{
-		
-	}
-	return (0);
 }

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/15 12:13:53 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/20 11:55:47 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int fd[2];
-	int pid;
-	int status;
+	char	*dst_ptr;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	if ((!dst && !src) || (dst == src))
+		return (dst);
+	dst_ptr = (char *)dst;
+	if (dst > src)
 	{
-		close(fd[0]);
+		while (len--)
+			((char *)dst)[len] = ((char *)src)[len];
 	}
 	else
 	{
-		
+		while (len--)
+			*(char *)dst++ = *(char *)src++;
 	}
-	return (0);
+	return (dst_ptr);
 }

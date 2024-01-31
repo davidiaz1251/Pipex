@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/28 12:11:27 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/28 12:13:17 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_putchar_fd(char c, int fd)
 {
-	int fd[2];
-	int pid;
-	int status;
-
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
-	{
-		close(fd[0]);
-	}
-	else
-	{
-		
-	}
-	return (0);
+	write(fd, &c, 1);
 }

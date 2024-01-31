@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/14 14:22:36 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/16 17:40:11 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int fd[2];
-	int pid;
-	int status;
+	unsigned char	*p;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	p = b;
+	while (len--)
 	{
-		close(fd[0]);
+		*p++ = (unsigned char)c;
 	}
-	else
-	{
-		
-	}
-	return (0);
+	return (b);
 }

@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/19 14:29:35 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/20 12:57:04 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int fd[2];
-	int pid;
-	int status;
+	size_t	j;
 
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	if (!haystack && !len)
+		return (NULL);
+	if (!*needle)
+		return ((char *)haystack);
+	while (*haystack && len--)
 	{
-		close(fd[0]);
+		j = 0;
+		while (*(haystack + j) == *(needle + j)
+			&& *(needle + j) && j <= len)
+		{
+			if (!*(needle + j + 1))
+				return ((char *)haystack);
+			j++;
+		}
+		haystack++;
 	}
-	else
-	{
-		
-	}
-	return (0);
+	return (NULL);
 }

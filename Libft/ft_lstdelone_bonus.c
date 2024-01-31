@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/29 12:53:39 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/29 13:02:51 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	int fd[2];
-	int pid;
-	int status;
-
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	if (lst)
 	{
-		close(fd[0]);
+		del(lst->content);
+		free(lst);
 	}
-	else
-	{
-		
-	}
-	return (0);
 }

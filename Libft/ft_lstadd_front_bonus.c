@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:32 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2023/09/28 16:24:42 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2023/09/28 16:53:12 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int fd[2];
-	int pid;
-	int status;
-
-	pipe(fd);
-	pid = fork();
-
-	if (!pid)
+	if (lst && new)
 	{
-		close(fd[0]);
+		new->next = *lst;
+		*lst = new;
 	}
-	else
-	{
-		
-	}
-	return (0);
 }
