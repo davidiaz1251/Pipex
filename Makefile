@@ -9,7 +9,7 @@ CFLAGS =  -Wall -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJECT)
-	$(CC) $(OBJECT) -o $(NAME)
+	$(CC) $(OBJECT) -LLibft -lft -o $(NAME)
 
 clean:
 	@rm -f $(OBJECT)
@@ -17,5 +17,15 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 re: fclean all
+
+git:
+	git add .
+	git status
+	@read -p "Quieres continuar? [y/n]: " answer; \
+	if [ "$$answer" = "y" ]; then \
+		read -p "Mensaje para el commit: " message; \
+		git commit -m "$$message"; \
+		git push; \
+	fi 
 
 .PHONY: all clean fclean re
