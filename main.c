@@ -6,7 +6,7 @@
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/02/02 11:27:47 by ldiaz-ra         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:38:25 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	open_file(char *str)
 {
 	int	fd;
 
-	fd = open()
+	fd = open();
 }
 void	process_one(char **argv, char **env)
 {
