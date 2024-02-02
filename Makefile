@@ -19,7 +19,8 @@ fclean: clean
 re: fclean all
 
 git:
-	git add .
+	@read -p "Archivo [./main.c]: " answer; \
+	git add "$$answer"
 	git status
 	@read -p "Quieres continuar? [y/n]: " answer; \
 	if [ "$$answer" = "y" ]; then \
