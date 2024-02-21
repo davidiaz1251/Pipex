@@ -1,10 +1,13 @@
 NAME = pipex
 
-SOURCE = main.c
+SOURCE = 	main.c		\
+			path.c		\
+			error.c		\
+			access.c
 
 OBJECT = $(SOURCE:.c=.o)
 
-CFLAGS =  -Wall -Wextra
+CFLAGS =  -Wextra -Werror -Wall
 
 all: $(NAME)
 
