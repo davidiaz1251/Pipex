@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path.c                                             :+:      :+:    :+:   */
+/*   free_matrix.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 11:08:32 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/02/21 17:51:45 by ldiaz-ra         ###   ########.fr       */
+/*   Created: 2024/02/21 18:44:15 by ldiaz-ra          #+#    #+#             */
+/*   Updated: 2024/02/21 18:46:05 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**find_path(char **env)
+void	free_matrix(char **array)
 {
 	int	i;
 
-	i = -1;
-	while (env[++i])
+	i = 0;
+	while (array[i])
 	{
-		if (!ft_strncmp(env[i], "PATH", 4))
-			return (ft_split(env[i] + 5, ':'));
+		free(array[i]);
+		i++;
 	}
-	return (NULL);
+	free(array);
+	array = NULL;
 }

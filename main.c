@@ -6,7 +6,7 @@
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:51:51 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/02/21 17:47:17 by ldiaz-ra         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:46:41 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	open_file(char *str)
 	return (fd);
 }
 
-int	process_one(char **argv, char **env, t_pipex *pipex)
+void	process_one(char **argv, char **env, t_pipex *pipex)
 {
 	int		infile;
 	
@@ -37,11 +37,9 @@ int	process_one(char **argv, char **env, t_pipex *pipex)
 	dup2(infile, STDIN_FILENO);
 	dup2(pipex->fd[1], STDOUT_FILENO);
 	execve(pipex->route, pipex->comman, env);
-	return (-1);
 }
-int	process_two(char **argv, char **env, t_pipex *pipex)
+void	process_two(char **argv, char **env, t_pipex *pipex)
 {
-
 	int	output;
 	
 	close(pipex->fd[1]);
@@ -57,7 +55,6 @@ int	process_two(char **argv, char **env, t_pipex *pipex)
 	dup2(pipex->fd[0], STDIN_FILENO);
 	dup2(output, STDOUT_FILENO);
 	execve(pipex->route, pipex->comman, env);
-	return (-1);
 }
 int	main(int argc, char **argv, char **env)
 {
@@ -78,6 +75,7 @@ int	main(int argc, char **argv, char **env)
 			process_two(argv, env, &pipex);
 		close(pipex.fd[0]);
 		close(pipex.fd[1]);
+		free_matrix(pipex.path);
 		waitpid(pipex.pid[0], NULL, 0);
 		waitpid(pipex.pid[1], NULL, 0);		
 	}

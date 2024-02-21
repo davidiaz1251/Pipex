@@ -6,7 +6,7 @@
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:59:08 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/02/21 15:47:20 by ldiaz-ra         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:29:09 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ char	*check_path(char **path, char *comman)
 	int		i;
 
 	i = 0;
+	if (!access(comman, R_OK))
+		return (comman);
 	while (path[i])
 	{
 		path_all = join_path(path[i], comman);
-		if (!access(comman, R_OK))
-			return (comman);
-		else if (!access(path_all, R_OK))
+		if (!access(path_all, R_OK))
 			return (path_all);
 		free(path_all);
 		i++;

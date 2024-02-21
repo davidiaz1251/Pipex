@@ -3,11 +3,12 @@ NAME = pipex
 SOURCE = 	main.c		\
 			path.c		\
 			error.c		\
-			access.c
+			access.c	\
+			free_matrix.c
 
 OBJECT = $(SOURCE:.c=.o)
 
-CFLAGS =  -Wextra -Werror -Wall
+CFLAGS =  -Wextra -Werror -Wall -g3
 
 all: $(NAME)
 
