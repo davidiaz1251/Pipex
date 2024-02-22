@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldiaz-ra <ldiaz-ra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:51:56 by ldiaz-ra          #+#    #+#             */
-/*   Updated: 2024/02/22 14:14:49 by ldiaz-ra         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:44:46 by ldiaz-ra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 # include <stdio.h>
-# include "Libft/libft.h"
+# include "../Libft/libft.h"
 # include <fcntl.h>
 
 typedef struct s_pipex

@@ -6,20 +6,43 @@ SOURCE = 	main.c		\
 			access.c	\
 			free_matrix.c
 
+SOURCEB = 	bonus/main_bonus.c		\
+			bonus/path_bonus.c		\
+			bonus/error_bonus.c		\
+			bonus/access_bonus.c		\
+			bonus/free_matrix_bonus.c
+
+
 OBJECT = $(SOURCE:.c=.o)
+
+OBJECTB = $(SOURCEB:.c=.o)
+
+LIBFT = Libft/libft.a
 
 CFLAGS =  -Wextra -Werror -Wall -g3
 
 all: $(NAME)
 
-$(NAME): $(OBJECT)
-	$(CC) $(OBJECT) -LLibft -lft -o $(NAME)
+$(NAME): $(OBJECT) $(LIBFT)
+	@$(CC) $(OBJECT) -LLibft -lft -o $(NAME)
+
+bonus:	$(OBJECTB) $(LIBFT)
+	@$(CC) $(OBJECTB) -LLibft -lft -o bonus/$(NAME)
+
+$(LIBFT): 
+	@make bonus -C Libft/
 
 clean:
 	@rm -f $(OBJECT)
+	@rm -f $(OBJECTB)
+	@make clean -C Libft/
+
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f bonus/$(NAME)
+	@make fclean -C Libft/
+
 re: fclean all
 
 git:
@@ -33,4 +56,4 @@ git:
 		git push; \
 	fi 
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
